@@ -32,8 +32,8 @@ public with sharing class MockSObjectBuilder {
 
 		if (fieldToValue.containsKey(field)) {
 			value = fieldToValue.get(field);
-        }
-        
+		}
+		
 		return value;
 	}
 
@@ -47,7 +47,8 @@ public with sharing class MockSObjectBuilder {
 	}
 
 	public String getMockId() {
-		return getMockId(mockType);
+		// return getMockId(mockType);
+		return MockIdGenerator.getMockId(mockType);
 	}
 
 	public static String getMockId(SObjectType objectType) {

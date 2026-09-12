@@ -2,14 +2,12 @@
 private class DmlBaseTest {
 	private class DmlStub extends DmlBase {}
 
-    private static Account createTestAccount() {
-        Account testAccount = new Account();
+	private static Account createTestAccount() {
+		Account testAccount = new Account();
 		testAccount.Name = 'Test Account';
-        testAccount.Source__c = Account.Source__c.getDescribe().getPicklistValues()[0].getLabel();
-        testAccount.DesiredRegion__c = Account.DesiredRegion__c.getDescribe().getPicklistValues()[0].getLabel();
 
-        return testAccount;
-    }
+		return testAccount;
+	}
 	static TestMethod void insertRecords_givenAccount_shouldGetId() {
 		Account testAccount = createTestAccount();
 
@@ -55,7 +53,7 @@ private class DmlBaseTest {
 
 	static TestMethod void deleteRecords_givenOldAccount_shouldReturnEmptyList() {
 		Account testAccount = createTestAccount();
-        insert testAccount; 
+		insert testAccount; 
 
 		DmlStub stub = new DmlStub();
 		Test.startTest();

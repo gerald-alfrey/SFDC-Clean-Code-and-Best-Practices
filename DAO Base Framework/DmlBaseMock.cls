@@ -1,7 +1,7 @@
 public abstract class DmlBaseMock implements DmlInterface {
 	protected List<SObject> records;
-    private static final String ID_FIELD = 'Id';
-    
+	private static final String ID_FIELD = 'Id';
+	
 	public DmlBaseMock(List<SObject> records) {
 		this.records = records;
 	}
@@ -46,20 +46,20 @@ public abstract class DmlBaseMock implements DmlInterface {
 	}
 
 	public void deleteRecords(List<SObject> records) {
-        Set<SObject> recordsSet = new Set<SObject>();
-        recordsSet.addAll(this.records);
+		Set<SObject> recordsSet = new Set<SObject>();
+		recordsSet.addAll(this.records);
 
 		for (SObject record : records) {
 			if (record.get(ID_FIELD) == null || record.get(ID_FIELD) == 'null') {
 				throw new DmlException('Records to delete must have a record Id.');
 			}
 			if (recordsSet.contains(record)) {
-                recordsSet.remove(record);
-            }
-        }
+				recordsSet.remove(record);
+			}
+		}
 
-        
-        this.records.clear();
-        this.records.addAll(recordsSet);
+		
+		this.records.clear();
+		this.records.addAll(recordsSet);
 	}
 }
